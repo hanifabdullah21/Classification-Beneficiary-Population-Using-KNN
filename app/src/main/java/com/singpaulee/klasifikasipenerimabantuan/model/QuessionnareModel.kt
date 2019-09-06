@@ -1,14 +1,17 @@
 package com.singpaulee.klasifikasipenerimabantuan.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class QuessionnareModel(
 	@field:SerializedName("variabel")
 	val variable: String? = null,
 
 	@field:SerializedName("bobot")
 	val weight: Int? = null
-)
+) : Parcelable
 
 data class QuessionnaireListModel(
 	@field:SerializedName("education")
@@ -27,6 +30,7 @@ data class QuessionnaireListModel(
 	var house : ArrayList<QuessionnareModel>? = null
 )
 
+@Parcelize
 data class QuessionnaireObjectModel(
 	@field:SerializedName("education")
 	var education : QuessionnareModel? = null,
@@ -42,4 +46,4 @@ data class QuessionnaireObjectModel(
 
 	@field:SerializedName("house")
 	var house : QuessionnareModel? = null
-)
+) : Parcelable

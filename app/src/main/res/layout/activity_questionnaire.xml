@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:context=".QuestionnaireActivity">
+
+    <include
+            android:id="@+id/qa_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/view_loading" />
+
+    <TextView
+            android:id="@+id/qa_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="150dp"
+            android:textSize="@dimen/textsize_subtitle1"
+            tools:text="Judul Questionnaire" />
+
+    <RadioGroup
+            android:id="@+id/qa_radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/qa_tv_title"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"/>
+
+    <Button
+            android:id="@+id/qa_btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="LANJUT"
+            android:textSize="@dimen/textsize_button" />
+
+</RelativeLayout>
