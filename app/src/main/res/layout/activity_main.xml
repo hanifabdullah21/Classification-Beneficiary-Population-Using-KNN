@@ -45,8 +45,21 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/main_cv_about_app"
+            android:id="@+id/main_cv_confusion_matrix"
             android:layout_below="@id/main_cv_list_classification"
+            style="@style/main_menu">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:textSize="@dimen/textsize_body1"
+                android:text="Confusion Matrix"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/main_cv_about_app"
+            android:layout_below="@id/main_cv_confusion_matrix"
             style="@style/main_menu">
         <TextView
                 android:layout_width="match_parent"
