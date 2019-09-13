@@ -17,11 +17,23 @@
             app:lottie_loop="true"/>
 
     <TextView
+            android:id="@+id/vl_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Loading ..."
             android:gravity="center"
             android:textSize="24sp"
             android:layout_below="@id/vl_lottie_loading"/>
+
+    <Button
+            android:id="@+id/vl_btn_reload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/vl_lottie_loading"
+            android:layout_alignEnd="@id/vl_lottie_loading"
+            android:layout_below="@id/vl_textview"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:text="Coba lagi"/>
 
 </RelativeLayout>

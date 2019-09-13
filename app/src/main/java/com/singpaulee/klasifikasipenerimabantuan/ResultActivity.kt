@@ -17,9 +17,10 @@ import kotlinx.android.synthetic.main.activity_result.*
 import org.jetbrains.anko.toast
 
 class ResultActivity : AppCompatActivity(), LoadingInterface {
+
     val TAG = "RESULT"
 
-    var qAnswerModel : QuessionnaireObjectModel? = null
+    var qAnswerModel: QuessionnaireObjectModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +33,7 @@ class ResultActivity : AppCompatActivity(), LoadingInterface {
     }
 
     @SuppressLint("CheckResult")
-    fun getListDataTraining(){
+    fun getListDataTraining() {
         showLoading()
         val dataTraining = AppConfig.retrofitConfig(this)
             .create<DataInterface>(DataInterface::class.java)
@@ -64,7 +65,7 @@ class ResultActivity : AppCompatActivity(), LoadingInterface {
     }
 
     private fun setContent(resultClassification: ClassificationDataModel) {
-        ra_tv_name.text = "Masih Belum ada nama"
+        ra_tv_name.text = intent.getStringExtra("name")
         ra_tv_education.text = resultClassification.education?.variable.toString()
         ra_tv_family.text = resultClassification.family?.variable.toString()
         ra_tv_job.text = resultClassification.job?.variable.toString()

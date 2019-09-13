@@ -17,8 +17,12 @@ import kotlinx.android.synthetic.main.activity_questionnaire.*
 import kotlinx.android.synthetic.main.view_loading.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
+import android.app.Activity
+import android.view.inputmethod.InputMethodManager
+
 
 class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, LoadingInterface {
+
 
 
     val TAG = "QuestionnaireAct"
@@ -27,6 +31,7 @@ class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, Loading
     var dataQuestionnaire: QuessionnaireListModel? = null   //objek untuk menampung data dari api
     var selectedAnswer: QuessionnaireObjectModel? = null
 
+    var name : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,8 @@ class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, Loading
         selectedAnswer = QuessionnaireObjectModel()
 
         qa_btn_next.setOnClickListener(this)
+        qa_btn_submit_name.setOnClickListener(this)
+        vl_btn_reload.setOnClickListener(this)
 
         getQuestionnaire()
     }
@@ -50,6 +57,20 @@ class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, Loading
                     showQuestionnaire()
                 }else{
                     toast("Silahkan pilih jawaban dulu.")
+                }
+            }
+            vl_btn_reload -> {
+                getQuestionnaire()
+            }
+            qa_btn_submit_name -> {
+                if(qa_edt_name.text.isBlank() || qa_edt_name.text.isEmpty()){
+                    qa_edt_name.error = "Silahkan isi nama dahulu"
+                    qa_edt_name.requestFocus()
+                }else{
+                    hideKeyboard(this)
+                    name = qa_edt_name.text.toString()
+                    qa_cv_name.visibility = View.GONE
+                    qa_rl_questionnaire.visibility = View.VISIBLE
                 }
             }
         }
@@ -100,7 +121,7 @@ class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, Loading
     fun getQuestionnaire() {
         showLoading()
         val questionnaire = AppConfig.retrofitConfig(this)
-            .create<DataInterface>(DataInterface::class.java)
+            .create(DataInterface::class.java)
             .getQuestionnaire("questionnaire")
 
         questionnaire.subscribeOn(Schedulers.newThread())
@@ -113,9 +134,11 @@ class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, Loading
                     showQuestionnaire()
                 } else {
                     toast("failed")
+                    showErrorMessage("Kesalahan !!")
                 }
             }, {
                 hideLoading()
+                showErrorMessage(it.localizedMessage)
                 toast(it.localizedMessage)
             })
     }
@@ -178,22 +201,46 @@ class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, Loading
 
     private fun moveToResult(){
         finish()
-        startActivity(intentFor<ResultActivity>("answer" to selectedAnswer))
+        startActivity(intentFor<ResultActivity>("answer" to selectedAnswer, "name" to name))
     }
 
     override fun showLoading() {
-        qa_btn_next.visibility = View.GONE
-        qa_radiogroup.visibility = View.GONE
-        qa_tv_title.visibility = View.GONE
+        //Show loading view and hide questionnaire and carview name
+        qa_rl_questionnaire.visibility = View.GONE
+        qa_cv_name.visibility = View.GONE
+
         qa_loading.visibility = View.VISIBLE
+        vl_textview.text = "Loading ..."
+        vl_btn_reload.visibility = View.GONE
     }
 
     override fun hideLoading() {
-        qa_btn_next.visibility = View.VISIBLE
-        qa_radiogroup.visibility = View.VISIBLE
-        qa_tv_title.visibility = View.VISIBLE
+        //Show cardview name and hide loading view and questionnaire
+        qa_rl_questionnaire.visibility = View.GONE
+        qa_cv_name.visibility = View.VISIBLE
+
         qa_loading.visibility = View.GONE
-    override fun showErrorMessage(message: String) {
+        vl_btn_reload.visibility = View.GONE
     }
+
+    override fun showErrorMessage(message: String) {
+        //Show loading view and error message , and hide cardview name and questionnaire
+        qa_rl_questionnaire.visibility = View.GONE
+        qa_cv_name.visibility = View.GONE
+
+        qa_loading.visibility = View.VISIBLE
+        vl_textview.text = message
+        vl_btn_reload.visibility = View.VISIBLE
+    }
+
+    fun hideKeyboard(activity: Activity) {
+        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = activity.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

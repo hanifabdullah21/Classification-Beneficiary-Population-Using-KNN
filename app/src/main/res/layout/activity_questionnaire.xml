@@ -14,47 +14,88 @@
             android:layout_height="match_parent"
             layout="@layout/view_loading" />
 
-    <androidx.cardview.widget.CardView
-            android:id="@+id/qa_cv_questionnaire"
+    <RelativeLayout
+            android:id="@+id/qa_rl_questionnaire"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp">
-
-        <TextView
-                android:id="@+id/qa_tv_title"
+            android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+                android:id="@+id/qa_cv_questionnaire"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:minHeight="180dp"
-                android:textSize="@dimen/textsize_subtitle1"
-                android:background="#FFF"
-                tools:text="Judul Questionnaire" />
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="10dp">
 
+            <TextView
+                    android:id="@+id/qa_tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="180dp"
+                    android:textSize="@dimen/textsize_subtitle1"
+                    android:background="#FFF"
+                    tools:text="Judul Questionnaire" />
+
+        </androidx.cardview.widget.CardView>
+
+        <RadioGroup
+                android:id="@+id/qa_radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/qa_cv_questionnaire"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"/>
+
+        <Button
+                android:id="@+id/qa_btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="LANJUT"
+                android:textColor="#FFF"
+                android:background="@color/colorPrimary"
+                android:textSize="@dimen/textsize_button" />
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/qa_cv_name"
+            app:cardCornerRadius="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            android:layout_margin="10dp">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Masukkan Nama"
+                    android:textSize="18sp"/>
+            <EditText
+                    android:id="@+id/qa_edt_name"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan nama disini"/>
+
+            <Button
+                    android:id="@+id/qa_btn_submit_name"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="Submit"
+                    android:textColor="#fff"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <RadioGroup
-            android:id="@+id/qa_radiogroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/qa_cv_questionnaire"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical"/>
-
-    <Button
-            android:id="@+id/qa_btn_next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="LANJUT"
-            android:textColor="#FFF"
-            android:background="@color/colorPrimary"
-            android:textSize="@dimen/textsize_button" />
 
 </RelativeLayout>
