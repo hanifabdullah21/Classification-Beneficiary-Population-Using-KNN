@@ -5,4 +5,6 @@ interface LoadingInterface {
     fun showLoading()
 
     fun hideLoading()
+
+    fun showErrorMessage(message: String)
 }

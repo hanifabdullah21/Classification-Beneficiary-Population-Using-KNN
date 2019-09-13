@@ -193,5 +193,7 @@ class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, Loading
         qa_radiogroup.visibility = View.VISIBLE
         qa_tv_title.visibility = View.VISIBLE
         qa_loading.visibility = View.GONE
+    override fun showErrorMessage(message: String) {
+    }
     }
 }

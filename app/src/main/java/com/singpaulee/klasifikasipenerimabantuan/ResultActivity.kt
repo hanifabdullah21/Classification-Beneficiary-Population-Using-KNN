@@ -82,4 +82,8 @@ class ResultActivity : AppCompatActivity(), LoadingInterface {
         ra_viewgroup_content.visibility = View.VISIBLE
         ra_viewgroup_loading.visibility = View.GONE
     }
+
+    override fun showErrorMessage(message: String) {
+
+    }
 }
