@@ -1,4 +1,4 @@
-package com.singpaulee.klasifikasipenerimabantuan
+package com.singpaulee.klasifikasipenerimabantuan.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -19,9 +19,12 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import android.app.Activity
 import android.view.inputmethod.InputMethodManager
+import com.singpaulee.klasifikasipenerimabantuan.LoadingInterface
+import com.singpaulee.klasifikasipenerimabantuan.R
 
 
-class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener, LoadingInterface {
+class QuestionnaireActivity : AppCompatActivity(), View.OnClickListener,
+    LoadingInterface {
 
 
 

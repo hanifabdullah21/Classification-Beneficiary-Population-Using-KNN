@@ -1,4 +1,4 @@
-package com.singpaulee.klasifikasipenerimabantuan
+package com.singpaulee.klasifikasipenerimabantuan.activity
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.singpaulee.klasifikasipenerimabantuan.LoadingInterface
+import com.singpaulee.klasifikasipenerimabantuan.R
 import com.singpaulee.klasifikasipenerimabantuan.algorythm.KNearestNeighbour
 import com.singpaulee.klasifikasipenerimabantuan.connection.AppConfig
 import com.singpaulee.klasifikasipenerimabantuan.connection.DataInterface
@@ -13,7 +15,6 @@ import com.singpaulee.klasifikasipenerimabantuan.model.ClassificationDataModel
 import com.singpaulee.klasifikasipenerimabantuan.model.QuessionnaireObjectModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_questionnaire.*
 import kotlinx.android.synthetic.main.activity_result.*
 import kotlinx.android.synthetic.main.view_loading.*
 import org.jetbrains.anko.backgroundColor
