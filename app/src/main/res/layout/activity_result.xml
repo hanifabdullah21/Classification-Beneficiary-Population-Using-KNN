@@ -203,6 +203,24 @@
 
                 </LinearLayout>
 
+                <Button
+                        android:id="@+id/ra_btn_add_to_db"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#FFF"
+                        android:text="Tambahkan ke Database"/>
+
+                <Button
+                        android:id="@+id/ra_btn_back_to_main_menu"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#FFF"
+                        android:text="Kembali ke manu utama"/>
+
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
