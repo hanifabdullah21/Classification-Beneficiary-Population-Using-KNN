@@ -6,6 +6,9 @@ data class ResponseDataTraining(
     @field:SerializedName("data")
     val data: ArrayList<ClassificationDataModel>? = null,
 
+    @field:SerializedName("test")
+    val test: ArrayList<ClassificationDataModel>? = null,
+
     @field:SerializedName("success")
     val success: Boolean? = null,
 

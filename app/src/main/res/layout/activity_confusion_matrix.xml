@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.ConfusionMatrixActivity">
+
+    <include
+            android:id="@+id/cma_loading"
+            layout="@layout/view_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <RelativeLayout
+            android:id="@+id/cma_relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cma_cv_k_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Masukkan Nilai K"
+                        android:textSize="18sp" />
+
+                <EditText
+                        android:id="@+id/cma_edt_k_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Masukkan nilai k disini"
+                        android:inputType="number" />
+
+                <Button
+                        android:id="@+id/cma_btn_submit_k_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Hitung Akurasi"
+                        android:textColor="#fff" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cma_cv_k_value">
+
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/cma_cv_result_accuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                <LinearLayout
+                        android:id="@+id/ra_viewgroup_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hasil Akurasi"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:background="#000" />
+
+                    <!--Data Training-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Jumlah Data Training"
+                                android:textSize="14sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_size_data_training"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textSize="14sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--Data Test-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Jumlah Data Tes"
+                                android:textSize="14sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_size_data_test"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textSize="14sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--K Value-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Nilai K"
+                                android:textSize="14sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_k_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textSize="14sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--True Positive-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Jumlah True Positive (TP)"
+                                android:textSize="14sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_size_tp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textSize="14sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--False Positif-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Jumlah False Positive (FP)"
+                                android:textSize="14sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_size_fp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textSize="14sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--True Negative-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Jumlah True Negative"
+                                android:textSize="14sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_size_tn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textSize="14sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--False Negative-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Jumlah False Negative (FN)"
+                                android:textSize="14sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_size_fn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textSize="14sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--Akurasi-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Akurasi"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_accuration"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--Akurasi-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Presisi"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_precission"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                    <!--Recall-->
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Recall"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                        <TextView
+                                android:id="@+id/cma_tv_recall"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                tools:text="100" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

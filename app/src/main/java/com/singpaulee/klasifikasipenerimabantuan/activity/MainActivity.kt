@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         main_cv_classification.setOnClickListener(this)
         main_cv_list_classification.setOnClickListener(this)
+        main_cv_confusion_matrix.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             main_cv_list_classification -> {
                 startActivity(intentFor<ListClassificationActivity>())
+            }
+            main_cv_confusion_matrix -> {
+                startActivity(intentFor<ConfusionMatrixActivity>())
             }
         }
     }

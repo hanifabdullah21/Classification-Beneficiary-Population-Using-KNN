@@ -59,7 +59,7 @@ class ResultActivity : AppCompatActivity(), LoadingInterface, View.OnClickListen
                     Log.d("RESULT", it.toString())
                     executeKNN(it.data)
                 } else {
-                    toast("failed")
+                    showErrorMessage(it.message.toString())
                 }
             }, {
                 hideLoading()

@@ -11,7 +11,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.DetailClassificationActivity"></activity>
+        <activity android:name=".activity.ConfusionMatrixActivity"></activity>
+        <activity android:name=".activity.DetailClassificationActivity" />
         <activity android:name=".activity.ListClassificationActivity" />
         <activity android:name=".activity.ResultActivity" />
         <activity android:name=".activity.QuestionnaireActivity" />
