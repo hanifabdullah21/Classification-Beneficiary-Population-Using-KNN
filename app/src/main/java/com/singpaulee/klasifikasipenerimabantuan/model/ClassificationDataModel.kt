@@ -1,7 +1,10 @@
 package com.singpaulee.klasifikasipenerimabantuan.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class ClassificationDataModel(
 
     @field:SerializedName("id")
@@ -30,4 +33,4 @@ data class ClassificationDataModel(
 
     var distance: Double? = null
 
-)
+) : Parcelable

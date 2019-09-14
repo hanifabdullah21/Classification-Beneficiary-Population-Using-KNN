@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.singpaulee.klasifikasipenerimabantuan.R
+import com.singpaulee.klasifikasipenerimabantuan.activity.DetailClassificationActivity
 import com.singpaulee.klasifikasipenerimabantuan.model.ClassificationDataModel
 import kotlinx.android.synthetic.main.itemview_classification.view.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class ClassificationAdapter(var context: Context, var listData:ArrayList<ClassificationDataModel>) : RecyclerView.Adapter<ClassificationAdapter.ViewHolder>() {
+class ClassificationAdapter(var context: Context, var listData: ArrayList<ClassificationDataModel>) :
+    RecyclerView.Adapter<ClassificationAdapter.ViewHolder>() {
 
     lateinit var itemView: View
 
@@ -30,6 +34,10 @@ class ClassificationAdapter(var context: Context, var listData:ArrayList<Classif
         fun bind(classificationDataModel: ClassificationDataModel) {
             itemView.ic_tv_name.text = classificationDataModel.name
             itemView.ic_tv_status.text = classificationDataModel.status
+
+            itemView.onClick {
+                itemView.context.startActivity(itemView.context.intentFor<DetailClassificationActivity>("model" to classificationDataModel))
+            }
         }
     }
 
